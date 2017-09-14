@@ -14,21 +14,21 @@ There are a few different ways to get the code into your WPM script, I'll list i
 
 1. Download selenium.js or the minified version, selenium.min.js, and upload it as a data file in Neustar's UI. Load the file contents in your script and evaluate the JavaScript.
 
-'''javascript
+``` javascript
 var s = datafile('selenium.min.js').readContents();
 eval(s + "");
 var driver = openBrowser();
 var selenium = new Selenium(driver);
-'''
+```
 
 2. Use Neustar's HttpClient to get it off GitHub.
 
-'''javascript
+``` javascript
 var c = openHttpClient();
 var s = c.get('https://cdn.rawgit.com/sbarbett/neustar_wpm_int_selenium/ea6c23c4/selenium.min.js');
 eval(s.getBody() + "");
 var driver = openBrowser();
 var selenium = new Selenium(driver);
-'''
+```
 
 3. Copy and paste all the code into your test script.
