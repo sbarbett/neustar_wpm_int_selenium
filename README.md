@@ -38,32 +38,32 @@ var selenium = new Selenium(driver);
 Methods (currently supported)
 ===============
 
-void [assertAlert](#assertAlert) (String pattern)
-void [assertAlertNotPresent](#assertAlertNotPresent) ()
-void [assertAlertPresent](#assertAlertPresent) ()
-void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)
-void [check](#check) (String locator)
-void [checkAndWait](#checkAndWait) (String locator)
-void [click](#click) (String locator)
-void [clickAndWait](#clickAndWait) (String locator)
-void [clickAt](#clickAt) (String locator, String coordString)
-void [clickAtAndWait](#clickAtAndWait) (String locator, String coordString)
-void [close](#close) ()
-void [closeAndWait](#closeAndWait) ()
-void [contextMenu](#contextMenu) (String locator)
-void [contextMenuAndWait](#contextMenuAndWait) (String locator)
-void [contextMenuAt](#contextMenuAt) (String locator, String coordString)
-void [contextMenuAtAndWait](#contextMenuAtAndWait) (String locator, String coordString)
-void [open](#open) (String url)
-void [pause](#pause) (Int waitTime)
-void [setSpeed](#setSpeed) (Int value)
-void [setTimeout](#setTimeout) (Int timeout)
-void [type](#type) (String locator, String value)
-void [typeAndWait](#typeAndWait) (String locator, String value)
-void [typeKeys](#typeKeys) (String locator, String value)
-void [typeKeysAndWait](#typeKeysAndWait) (String locator, String value)
-void [uncheck](#uncheck) (String locator)
-void [uncheckAndWait](#uncheckAndWait) (String locator)
+void [assertAlert](#assertAlert) (String pattern)<br />
+void [assertAlertNotPresent](#assertAlertNotPresent) ()<br />
+void [assertAlertPresent](#assertAlertPresent) ()<br />
+void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)<br />
+void [check](#check) (String locator)<br />
+void [checkAndWait](#checkAndWait) (String locator)<br />
+void [click](#click) (String locator)<br />
+void [clickAndWait](#clickAndWait) (String locator)<br />
+void [clickAt](#clickAt) (String locator, String coordString)<br />
+void [clickAtAndWait](#clickAtAndWait) (String locator, String coordString)<br />
+void [close](#close) ()<br />
+void [closeAndWait](#closeAndWait) ()<br />
+void [contextMenu](#contextMenu) (String locator)<br />
+void [contextMenuAndWait](#contextMenuAndWait) (String locator)<br />
+void [contextMenuAt](#contextMenuAt) (String locator, String coordString)<br />
+void [contextMenuAtAndWait](#contextMenuAtAndWait) (String locator, String coordString)<br />
+void [open](#open) (String url)<br />
+void [pause](#pause) (Int waitTime)<br />
+void [setSpeed](#setSpeed) (Int value)<br />
+void [setTimeout](#setTimeout) (Int timeout)<br />
+void [type](#type) (String locator, String value)<br />
+void [typeAndWait](#typeAndWait) (String locator, String value)<br />
+void [typeKeys](#typeKeys) (String locator, String value)<br />
+void [typeKeysAndWait](#typeKeysAndWait) (String locator, String value)<br />
+void [uncheck](#uncheck) (String locator)<br />
+void [uncheckAndWait](#uncheckAndWait) (String locator)<br />
 void [waitForPageToLoad](#waitForPageToLoad) (Int timeout)
 
 <a name="assertAlert">assertAlert</a>
