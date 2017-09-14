@@ -1,6 +1,5 @@
 /*
-  Create an object containing "Selenese" similar to the deprecated Selenium
-  Interface. 
+  Create an object containing "Selenese" similar to the deprecated Selenium Interface. 
 
   https://seleniumhq.github.io/selenium/docs/api/java/com/thoughtworks/selenium/Selenium.html
 
@@ -12,6 +11,8 @@ function Selenium(browser) {
   if (typeof browser === 'undefined') { 
     throw '[null] Selenium Exception: driver not supplied';
   }
+  // Neustar doesn't have ExpectedConditions exposed in their API docs, you have to reference
+  // the entire package name. Doing this for brevity.
   this._expectConditions = org.openqa.selenium.support.ui.ExpectedConditions;
   this._timeout = 30000;
   this._speed = 0;
@@ -19,8 +20,8 @@ function Selenium(browser) {
 }
 
 /*
-  Parser for the old Selenium-style Element Locators. I don't think I'm going
-  to support "dom" or "ui" since I don't see much practical use for them. 
+  Parser for the old Selenium-style Element Locators. I don't think I'm going to support 
+  "dom" or "ui" since I don't see much practical use for them. 
 */
 Selenium.prototype._locatorParser = function(locator) {
   var by;
@@ -65,8 +66,8 @@ Selenium.prototype._checkArg = function(argument, error) {
 }
 
 /*
-  Amount of time to wait after every Selenium action. By default it is 0ms.
-  Use setSpeed to increase this value.
+  Amount of time to wait after every Selenium action. By default it is 0ms. Use setSpeed to 
+  increase this value.
 */
 Selenium.prototype._speedWait = function() {
   this.pause(this._speed);
@@ -83,6 +84,40 @@ Selenium.prototype._waitForLoad = function() {
 }
 
 /*
+  Assert that an alert is present.
+*/
+Selenium.prototype.assertAlertPresent = function() {
+  assertTrue(this._expectConditions.alertIsPresent(), "[assertAlert] Assertion Failure: alert not found");
+}
+
+/*
+  Assert that an alert is not present.
+*/
+Selenium.prototype.assertAlertNotPresent = function() {
+  assertFalse(this._expectConditions.alertIsPresent(), "[assertAlert] Assertion Failure: alert found");
+}
+
+/*
+  Check a toggle-button (checkbox/radio) using a Selenium Element Locator.
+*/
+Selenium.prototype.check = function(locator) {
+  this._checkArg(locator, '[check] Selenium Exception: an element locator is required');
+  this._driver.findElement(this._locatorParser(locator)).click();
+  this._speedWait();
+}
+
+/*
+  Check a toggle-button (checkbox/radio) using a Selenium Element Locator then wait for the 
+  page to load.
+*/
+Selenium.prototype.checkAndWait = function(locator) {
+  this._checkArg(locator, '[checkAndWait] Selenium Exception: an element locator is required');
+  this._driver.findElement(this._locatorParser(locator)).click();
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
   Click on an element using a Selenium Element Locator.
 */
 Selenium.prototype.click = function(locator) {
@@ -92,8 +127,7 @@ Selenium.prototype.click = function(locator) {
 }
 
 /*
-  Click on an element using a Selenium Element Locator then wait for the page
-  to load.
+  Click on an element using a Selenium Element Locator then wait for the page to load.
 */
 Selenium.prototype.clickAndWait = function(locator) {
   this._checkArg(locator, '[clickAndWait] Selenium Exception: an element locator is required');
@@ -103,8 +137,122 @@ Selenium.prototype.clickAndWait = function(locator) {
 }
 
 /*
-  Open a specified url. "AndWait" is implied with this method, it will always
-  wait for the page to reach a ready state.
+  Perform a click at an offset relative to the top left corner of an element.
+*/
+Selenium.prototype.clickAt = function(locator, offset) {
+  this._checkArg(locator, '[clickAt] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[clickAt] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[clickAt] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .click()
+                       .perform();
+  this._speedWait();
+}
+
+/*
+  Perform a click at an offset relative to the top left corner of an element then wait for 
+  the page to load.
+*/
+Selenium.prototype.clickAtAndWait = function(locator, offset) {
+  this._checkArg(locator, '[clickAtAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[clickAtAndWait] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[clickAtAndWait] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .click()
+                       .perform();
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Close the window that currently has focus.
+*/
+Selenium.prototype.close = function() {
+  this._driver.close();
+  this._speedWait();
+}
+
+/*
+  Close the window that currently has focus then wait for the page to load.
+*/
+Selenium.prototype.closeAndWait = function() {
+  this._driver.close();
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Simulate right-clicking an element and opening a context menu.
+*/
+Selenium.prototype.contextMenu = function(locator) {
+  this._checkArg(locator, '[contextMenu] Selenium Exception: an element locator is required');
+  Actions(this._driver).contextClick(driver.findElement(this._locatorParser(locator)));
+  this._speedWait();
+}
+
+/*
+  Simulate right-clicking an element and opening a context menu then wait for the page to 
+  load.
+*/
+Selenium.prototype.contextMenuAndWait = function(locator) {
+  this._checkArg(locator, '[contextMenuAndWait] Selenium Exception: an element locator is required');
+  Actions(this._driver).contextClick(driver.findElement(this._locatorParser(locator)));
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Simulate right-clicking an element and opening a context menu at an offset relative to the
+  top right corner.
+*/
+Selenium.prototype.contextMenuAt = function(locator, offset) {
+  this._checkArg(locator, '[contextMenuAt] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[contextMenuAt] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[contextMenuAt] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .contextClick()
+                       .perform();
+  this._speedWait();
+}
+
+/*
+  Simulate right-clicking an element and opening a context menu at an offset relative to the 
+  top right corner then wait for the page to load.
+*/
+Selenium.prototype.contextMenuAtAndWait = function(locator, offset) {
+  this._checkArg(locator, '[contextMenuAtAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[contextMenuAtAndWait] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[contextMenuAtAndWait] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .contextClick()
+                       .perform();
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Open a specified url. "AndWait" is implied with this method, it will always wait for the 
+  page to reach a ready state.
 */
 Selenium.prototype.open = function(url) {
   this._checkArg(url, '[open] Selenium Exception: a url is required');
@@ -129,8 +277,7 @@ Selenium.prototype.setSpeed = function(time) {
 }
 
 /*
-  Select the timeout value for Selenium actions with waits in ms. The 
-  default is 30000ms.
+  Select the timeout value for Selenium actions with waits in ms. The default is 30000ms.
 */
 Selenium.prototype.setTimeout = function(time) {
   this._checkArg(time, '[setTimeout] Selenium Exception: you must specify the amount of time to pause');
