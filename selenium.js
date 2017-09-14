@@ -4,15 +4,18 @@
 
   https://seleniumhq.github.io/selenium/docs/api/java/com/thoughtworks/selenium/Selenium.html
 
-  The default browser is Firefox. If you pass 'CHROME' as a constructor,
-  a Google Chrome instance will be opened instead.
+  You must supply a WebDriver object invoked by the WPM API, see:
+
+  http://docs.wpm.neustar.biz/testscript-api/biz/neustar/wpm/api/Test.html#openBrowser()
 */
 function Selenium(browser) {
-  if (typeof browser === 'undefined') { browser = 'FF' }
+  if (typeof browser === 'undefined') { 
+    throw '[null] Selenium Exception: driver not supplied';
+  }
   this._expectConditions = org.openqa.selenium.support.ui.ExpectedConditions;
   this._timeout = 30000;
   this._speed = 0;
-  this._driver = openBrowser(browser);
+  this._driver = browser;
 }
 
 /*
@@ -24,18 +27,25 @@ Selenium.prototype._locatorParser = function(locator) {
   if (locator.includes('=')) {
     var lType = locator.split(/=(.+)/)[0];
     var lValue = locator.split(/=(.+)/)[1];
+    if (lType !== 'name' 
+      || lType !== 'css' 
+      || lType !== 'id' 
+      || lType !== 'identifier' 
+      || lType !== 'link' 
+      || lType !== 'xpath') {
+      by = By.id(locator);
+    }
     if (lType === 'name') {
       by = By.name(lValue);
     } else if (lType === 'css') {
       by = By.cssSelector(lValue);
-    } else if (lType === 'id' || lType === 'identifier') {
-      by = By.id(lvalue);
+    } else if (lType === 'id' 
+      || lType === 'identifier') {
+      by = By.id(lValue);
     } else if (lType === 'link') {
       by = By.linkText(lValue);
     } else if (lType === 'xpath') {
       by = By.xpath(lValue);
-    } else {
-      throw '[_locatorParser] Selenium Exception: invalid locator type';
     }
   } else if (locator.startsWith('//')) {
     by = By.xpath(locator);
@@ -43,6 +53,15 @@ Selenium.prototype._locatorParser = function(locator) {
     by = By.id(locator);
   }
   return by;
+}
+
+/*
+  Check for undefined arguments and throw an error.
+*/
+Selenium.prototype._checkArg = function(argument, error) {
+  if (typeof argument === 'undefined') {
+    throw error;
+  }
 }
 
 /*
@@ -67,9 +86,7 @@ Selenium.prototype._waitForLoad = function() {
   Click on an element using a Selenium Element Locator.
 */
 Selenium.prototype.click = function(locator) {
-  if (typeof locator === 'undefined') {
-    throw '[click] Selenium Exception: an element locator is required';
-  }
+  this._checkArg(locator, '[click] Selenium Exception: an element locator is required');
   this._driver.findElement(this._locatorParser(locator)).click();
   this._speedWait();
 }
@@ -79,9 +96,7 @@ Selenium.prototype.click = function(locator) {
   to load.
 */
 Selenium.prototype.clickAndWait = function(locator) {
-  if (typeof locator === 'undefined') {
-    throw '[click] Selenium Exception: an element locator is required';
-  }
+  this._checkArg(locator, '[clickAndWait] Selenium Exception: an element locator is required');
   this._driver.findElement(this._locatorParser(locator)).click();
   this._waitForLoad();
   this._speedWait();
@@ -92,9 +107,7 @@ Selenium.prototype.clickAndWait = function(locator) {
   wait for the page to reach a ready state.
 */
 Selenium.prototype.open = function(url) {
-  if (typeof url === 'undefined') {
-    throw '[open] Selenium Exception: a url is required';
-  }
+  this._checkArg(url, '[open] Selenium Exception: a url is required');
   this._driver.get(url);
   this._speedWait();
 }
@@ -103,9 +116,7 @@ Selenium.prototype.open = function(url) {
   Wait for a specified amount of time in ms.
 */
 Selenium.prototype.pause = function(time) {
-  if (typeof time === 'undefined') {
-    throw '[pause] Selenium Exception: you must specify the amount of time to pause';
-  }
+  this._checkArg(time, '[pause] Selenium Exception: you must specify the amount of time to pause');
   pause(time);
 }
 
@@ -113,9 +124,7 @@ Selenium.prototype.pause = function(time) {
   Set the speed to wait after a Selenium action in ms. The default is 0ms.
 */
 Selenium.prototype.setSpeed = function(time) {
-  if (typeof time === 'undefined') {
-    throw '[setSpeed] Selenium Exception: you must specify the amount of time to pause';
-  }
+  this._checkArg(time, '[setSpeed] Selenium Exception: you must specify the amount of time to pause');
   this._speed = time;
 }
 
@@ -124,10 +133,18 @@ Selenium.prototype.setSpeed = function(time) {
   default is 30000ms.
 */
 Selenium.prototype.setTimeout = function(time) {
-  if (typeof time === 'undefined') {
-    throw '[setTimeout] Selenium Exception: you must specify the amount of time to pause';
-  }
+  this._checkArg(time, '[setTimeout] Selenium Exception: you must specify the amount of time to pause');
   this._timeout = time;
+}
+
+/*
+  Find an input using an Element Locator and enter some text.
+*/
+Selenium.prototype.type = function(locator, text) {
+  this._checkArg(locator, '[type] Selenium Exception: an element locator is required');
+  this._checkArg(text, '[type] Selenium Exception: you must specify what is to be typed');
+  driver.findElement(this._locatorParser(locator)).sendKeys(text);
+  this._speedWait();
 }
 
 /*
