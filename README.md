@@ -1,6 +1,8 @@
 neustar_wpm_int_selenium
 ===============
 
+*Work in progress*
+
 This is a remaking of the deprecated Selenium Interface using [Neustar WPM's JavaScript API](http://docs.wpm.neustar.biz/testscript-api/biz/neustar/wpm/api/Selenium.html). The purpose is to provide some minimal support for users in need of supporting Selenese style scripting in the wake of Selenium 3 adoption. To me, more of an interesting project as opposed to something practical or advisable. More than anything, it's an interesting<sup>*</sup> look into how methods in the old Selenium RC Interface can be reproduced with WebDriver.
 
 <sup>* The definition of interesting may vary by individual</sup>
@@ -32,3 +34,50 @@ var selenium = new Selenium(driver);
 ```
 
 3. Copy and paste all the code into your test script.
+
+Methods (currently supported)
+===============
+
+assertAlertPresent
+---------------
+
+```
+void assertAlertPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if no alert is present
+
+assertAlertNotPresent
+---------------
+
+```
+void assertAlertNotPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if an alert is present
+
+check
+---------------
+
+```
+void check(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check a toggle-button (checkbox/radio)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+check
+---------------
+
+```
+void checkAndWait(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check a toggle-button (checkbox/radio)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes that it causes a page to load and, in turn, waits for it to complete loading before returning.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
