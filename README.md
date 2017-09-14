@@ -45,7 +45,7 @@ assertAlertPresent
 void assertAlertPresent()
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if no alert is present
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>Checks for an alert. Throws an exception if no alert is present</div>
 
 assertAlertNotPresent
 ---------------
@@ -54,7 +54,7 @@ assertAlertNotPresent
 void assertAlertNotPresent()
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if an alert is present
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>Checks for an alert. Throws an exception if an alert is present</div>
 
 check
 ---------------
@@ -63,21 +63,21 @@ check
 void check(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check a toggle-button (checkbox/radio)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>Check a toggle-button (checkbox/radio)</div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>**Parameters:**</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>locator - an element locator</div>
 
-check
+checkAndWait
 ---------------
 
 ```
 void checkAndWait(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check a toggle-button (checkbox/radio)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>Check a toggle-button (checkbox/radio)</div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes that it causes a page to load and, in turn, waits for it to complete loading before returning.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>*Note:* This command assumes that it causes a page to load and, in turn, waits for it to complete loading before returning</div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>**Parameters:**</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div>locator - an element locator</div>
