@@ -84,17 +84,46 @@ Selenium.prototype._waitForLoad = function() {
 }
 
 /*
-  Assert that an alert is present.
+
 */
-Selenium.prototype.assertAlertPresent = function() {
-  assertTrue(this._expectConditions.alertIsPresent(), "[assertAlert] Assertion Failure: alert not found");
+Selenium.prototype.assertAlert = function(pattern) {
+  this._checkArg(pattern, '[assertAlert] Selenium Exeption: a matching pattern is required')
+  if (!this._expectedConditions.alertIsPresent()) {
+    throw '[assertAlert] Selenium Exception: no alert found';
+  }
+  assertTrue(driver.switchTo().alert().getText().contains(pattern), '[asserAlert] Assertion Failure: pattern not found');
+  this._speedWait();
 }
 
 /*
   Assert that an alert is not present.
 */
 Selenium.prototype.assertAlertNotPresent = function() {
-  assertFalse(this._expectConditions.alertIsPresent(), "[assertAlert] Assertion Failure: alert found");
+  assertFalse(this._expectConditions.alertIsPresent(), '[assertAlertNotPresent] Assertion Failure: alert found');
+  this._speedWait();
+}
+
+/*
+  Assert that an alert is present.
+*/
+Selenium.prototype.assertAlertPresent = function() {
+  assertTrue(this._expectConditions.alertIsPresent(), '[assertAlertPresent] Assertion Failure: alert not found');
+  this._speedWait();
+}
+
+/*
+  Assert that the value of an attribute of a selected element matches a pattern.
+*/
+Selenium.prototype.assertAttribute = function(attributeLocator, pattern) {
+  this._checkArg(attributeLocator, '[assertAttribute] Selenium Exception: an attribute locator is required, syntax locator@attribute');
+  if (!attributeLocator.includes('@')) {
+    throw '[assertAttribute] Selenium Exception: an attribute locator is required, syntax locator@attribute';
+  }
+  var locator = locator.split(/@(.+)/)[0];
+  var attribute = locator.split(/@(.+)/)[1];
+  var value = driver.findElement(this._locatorParser(locator)).getAttribute(attribute);
+  assertTrue(value === pattern, '[assertAttribute] Assertion Failure: pattern and value do not match');
+  this._speedWait();
 }
 
 /*
@@ -102,7 +131,8 @@ Selenium.prototype.assertAlertNotPresent = function() {
 */
 Selenium.prototype.check = function(locator) {
   this._checkArg(locator, '[check] Selenium Exception: an element locator is required');
-  this._driver.findElement(this._locatorParser(locator)).click();
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].checked = true;', element);
   this._speedWait();
 }
 
@@ -112,7 +142,8 @@ Selenium.prototype.check = function(locator) {
 */
 Selenium.prototype.checkAndWait = function(locator) {
   this._checkArg(locator, '[checkAndWait] Selenium Exception: an element locator is required');
-  this._driver.findElement(this._locatorParser(locator)).click();
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].checked = true;', element);
   this._waitForLoad();
   this._speedWait();
 }
@@ -285,12 +316,70 @@ Selenium.prototype.setTimeout = function(time) {
 }
 
 /*
-  Find an input using an Element Locator and enter some text.
+  Find an input using an Element Locator and set the value.
 */
 Selenium.prototype.type = function(locator, text) {
   this._checkArg(locator, '[type] Selenium Exception: an element locator is required');
   this._checkArg(text, '[type] Selenium Exception: you must specify what is to be typed');
-  driver.findElement(this._locatorParser(locator)).sendKeys(text);
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].setAttribute("value", "' + text + '");', element);
+  this._speedWait();
+}
+
+/*
+  Find an input using an Element Locator and set the value then wait for the page to load.
+*/
+Selenium.prototype.typeAndWait = function(locator, text) {
+  this._checkArg(locator, '[typeAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(text, '[typeAndWait] Selenium Exception: you must specify what is to be typed');
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].setAttribute("value", "' + text + '");', element);
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Simulates keystroke events on the specified element, as though you typed the value 
+  key-by-key.
+*/
+Selenium.prototype.typeKeys = function(locator, text) {
+  this._checkArg(locator, '[typeKeys] Selenium Exception: an element locator is required');
+  this._checkArg(text, '[typeKeys] Selenium Exception: you must specify what is to be typed');
+  this._driver.findElement(this._locatorParser(locator)).sendKeys(text);
+  this._speedWait();
+}
+
+/*
+  Simulates keystroke events on the specified element, as though you typed the value 
+  key-by-key, then wait for the page to load.
+*/
+Selenium.prototype.typeKeysAndWait = function(locator, text) {
+  this._checkArg(locator, '[typeKeysAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(text, '[typeKeysAndWait] Selenium Exception: you must specify what is to be typed');
+  this._driver.findElement(this._locatorParser(locator)).sendKeys(text);
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Uncheck a toggle-button (checkbox/radio) using a Selenium Element Locator.
+*/
+Selenium.prototype.uncheck = function(locator) {
+  this._checkArg(locator, '[uncheck] Selenium Exception: an element locator is required');
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].checked = false;', element);
+  this._speedWait();
+}
+
+/*
+  Uncheck a toggle-button (checkbox/radio) using a Selenium Element Locator then wait for the 
+  page to load.
+*/
+Selenium.prototype.uncheckAndWait = function(locator) {
+  this._checkArg(locator, '[uncheckAndWait] Selenium Exception: an element locator is required');
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].checked = false;', element);
+  this._waitForLoad();
   this._speedWait();
 }
 

@@ -38,14 +38,17 @@ var selenium = new Selenium(driver);
 Methods (currently supported)
 ===============
 
-assertAlertPresent
+assertAlert
 ---------------
 
 ```
-void assertAlertPresent()
+void assertAlert(String pattern)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if no alert is present
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for a specified pattern in an alert. Throws an exception if not found.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
 
 assertAlertNotPresent
 ---------------
@@ -55,6 +58,29 @@ void assertAlertNotPresent()
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if an alert is present
+
+assertAlertPresent
+---------------
+
+```
+void assertAlertPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if no alert is present
+
+assertAttribute
+---------------
+
+```
+void assertAttribute(String attributeLocator,
+                     String pattern)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that the value of an attribute of a selected element matches a pattern
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeLocator - an element locator followed by an @ and then the name of the attribute<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
 
 check
 ---------------
@@ -279,6 +305,78 @@ void type(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
+
+typeAndWait
+---------------
+
+```
+void typeAndWait(String locator,
+                 String value)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the value of an input field, as though it was typed in
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
+
+typeKeys
+---------------
+
+```
+void typeKeys(String locator,
+              String value)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simulates keystroke events on the specified element, as though you typed the value key-by-key
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
+
+typeKeysAndWait
+---------------
+
+```
+void typeKeysAndWait(String locator,
+                     String value)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simulates keystroke events on the specified element, as though you typed the value key-by-key
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
+
+uncheck
+---------------
+
+```
+void uncheck(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uncheck a toggle-button (checkbox/radio)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+uncheckAndWait
+---------------
+
+```
+void uncheckAndWait(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uncheck a toggle-button (checkbox/radio)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
 waitForPageToLoad
 ---------------
