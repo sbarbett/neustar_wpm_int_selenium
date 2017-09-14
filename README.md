@@ -38,7 +38,35 @@ var selenium = new Selenium(driver);
 Methods (currently supported)
 ===============
 
-assertAlert
+void [assertAlert](#assertAlert) (String pattern)
+void [assertAlertNotPresent](#assertAlertNotPresent) ()
+void [assertAlertPresent](#assertAlertPresent) ()
+void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)
+void [check](#check) (String locator)
+void [checkAndWait](#checkAndWait) (String locator)
+void [click](#click) (String locator)
+void [clickAndWait](#clickAndWait) (String locator)
+void [clickAt](#clickAt) (String locator, String coordString)
+void [clickAtAndWait](#clickAtAndWait) (String locator, String coordString)
+void [close](#close) ()
+void [closeAndWait](#closeAndWait) ()
+void [contextMenu](#contextMenu) (String locator)
+void [contextMenuAndWait](#contextMenuAndWait) (String locator)
+void [contextMenuAt](#contextMenuAt) (String locator, String coordString)
+void [contextMenuAtAndWait](#contextMenuAtAndWait) (String locator, String coordString)
+void [open](#open) (String url)
+void [pause](#pause) (Int waitTime)
+void [setSpeed](#setSpeed) (Int value)
+void [setTimeout](#setTimeout) (Int timeout)
+void [type](#type) (String locator, String value)
+void [typeAndWait](#typeAndWait) (String locator, String value)
+void [typeKeys](#typeKeys) (String locator, String value)
+void [typeKeysAndWait](#typeKeysAndWait) (String locator, String value)
+void [uncheck](#uncheck) (String locator)
+void [uncheckAndWait](#uncheckAndWait) (String locator)
+void [waitForPageToLoad](#waitForPageToLoad) (Int timeout)
+
+<a name="assertAlert">assertAlert</a>
 ---------------
 
 ```
@@ -50,7 +78,7 @@ void assertAlert(String pattern)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
 
-assertAlertNotPresent
+<a name="assertAlertNotPresent">assertAlertNotPresent</a>
 ---------------
 
 ```
@@ -59,7 +87,7 @@ void assertAlertNotPresent()
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if an alert is present
 
-assertAlertPresent
+<a name="assertAlertPresent">assertAlertPresent</a>
 ---------------
 
 ```
@@ -68,7 +96,7 @@ void assertAlertPresent()
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for an alert. Throws an exception if no alert is present
 
-assertAttribute
+<a name="assertAttribute">assertAttribute</a>
 ---------------
 
 ```
@@ -82,7 +110,7 @@ void assertAttribute(String attributeLocator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeLocator - an element locator followed by an @ and then the name of the attribute<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
 
-check
+<a name="check">check</a>
 ---------------
 
 ```
@@ -94,7 +122,7 @@ void check(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-checkAndWait
+<a name="checkAndWait">checkAndWait</a>
 ---------------
 
 ```
@@ -108,7 +136,7 @@ void checkAndWait(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-click
+<a name="click">click</a>
 ---------------
 
 ```
@@ -120,7 +148,7 @@ void click(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-clickAndWait
+<a name="clickAndWait">clickAndWait</a>
 ---------------
 
 ```
@@ -134,7 +162,7 @@ void clickAndWait(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-clickAt
+<a name="clickAt">clickAt</a>
 ---------------
 
 ```
@@ -148,7 +176,7 @@ void clickAt(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
 
-clickAtAndWait
+<a name="clickAtAndWait">clickAtAndWait</a>
 ---------------
 
 ```
@@ -164,7 +192,7 @@ void clickAtAndWait(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
 
-close
+<a name="close">close</a>
 ---------------
 
 ```
@@ -173,7 +201,7 @@ void close()
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close the window that currently has focus
 
-closeAndWait
+<a name="closeAndWait">closeAndWait</a>
 ---------------
 
 ```
@@ -184,7 +212,7 @@ void closeAndWait()
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
 
-contextMenu
+<a name="contextMenu">contextMenu</a>
 ---------------
 
 ```
@@ -196,7 +224,7 @@ void contextMenu(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-contextMenuAndWait
+<a name="contextMenuAndWait">contextMenuAndWait</a>
 ---------------
 
 ```
@@ -210,7 +238,7 @@ void contextMenuAndWait(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-contextMenuAt
+<a name="contextMenuAt">contextMenuAt</a>
 ---------------
 
 ```
@@ -224,7 +252,7 @@ void contextMenuAt(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
 
-contextMenuAtAndWait
+<a name="contextMenuAtAndWait">contextMenuAtAndWait</a>
 ---------------
 
 ```
@@ -240,7 +268,7 @@ void contextMenuAtAndWait(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
 
-open
+<a name="open">open</a>
 ---------------
 
 ```
@@ -254,7 +282,7 @@ void open(String url)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url - the url to open; relative or absolute
 
-pause
+<a name="pause">pause</a>
 ---------------
 
 ```
@@ -266,7 +294,7 @@ void pause(Int waitTime)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;waitTime - the amount of time to sleep in ms
 
-setSpeed
+<a name="setSpeed">setSpeed</a>
 ---------------
 
 ```
@@ -280,7 +308,7 @@ void setSpeed(Int value)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the number of milliseconds to pause after operation
 
-setTimeout
+<a name="setTimeout">setTimeout</a>
 ---------------
 
 ```
@@ -292,7 +320,7 @@ void setTimeout(Int timeout)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeout - a timeout in milliseconds, after which the action will return with an error
 
-type
+<a name="type">type</a>
 ---------------
 
 ```
@@ -306,7 +334,7 @@ void type(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
 
-typeAndWait
+<a name="typeAndWait">typeAndWait</a>
 ---------------
 
 ```
@@ -322,7 +350,7 @@ void typeAndWait(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
 
-typeKeys
+<a name="typeKeys">typeKeys</a>
 ---------------
 
 ```
@@ -336,7 +364,7 @@ void typeKeys(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
 
-typeKeysAndWait
+<a name="typeKeysAndWait">typeKeysAndWait</a>
 ---------------
 
 ```
@@ -352,7 +380,7 @@ void typeKeysAndWait(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value - the value to type
 
-uncheck
+<a name="uncheck">uncheck</a>
 ---------------
 
 ```
@@ -364,7 +392,7 @@ void uncheck(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-uncheckAndWait
+<a name="uncheckAndWait">uncheckAndWait</a>
 ---------------
 
 ```
@@ -378,7 +406,7 @@ void uncheckAndWait(String locator)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
 
-waitForPageToLoad
+<a name="waitForPageToLoad">waitForPageToLoad</a>
 ---------------
 
 ```
