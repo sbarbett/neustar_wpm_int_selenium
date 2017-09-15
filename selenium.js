@@ -428,7 +428,7 @@ Selenium.prototype.isPromptPresent = function() {
   Check that the specified text appears somewhere on the rendered page.
 */
 Selenium.prototype.isTextPresent = function(pattern) {
-  this._checkArg(locator, '[isTextPresent] Selenium Exception: you must supply a pattern to match');
+  this._checkArg(pattern, '[isTextPresent] Selenium Exception: you must supply a pattern to match');
   return this._driver.findElement(By.tagName('body')).getText().contains(pattern);
 }
 
