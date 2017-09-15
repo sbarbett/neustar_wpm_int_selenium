@@ -374,6 +374,65 @@ Selenium.prototype.isAlertPresent = function() {
 }
 
 /*
+  Get whether a toggle-button is checked.
+*/
+Selenium.prototype.isChecked = function(locator) {
+  this._checkArg(locator, '[isChecked] Selenium Exception: an element locator is required');
+  return this._driver.findElement(this._locatorParser(locator)).isSelected();
+}
+
+/*
+  Checks for a confirmation box (same as isAlertPresent).
+*/
+Selenium.prototype.isConfirmationPresent = function() {
+  return this.isAlertPresent();
+}
+
+/*
+  Check tosee if an element is readonly or disabled.
+*/
+Selenium.prototype.isEditable = function(locator) {
+  this._checkArg(locator, '[isEditable] Selenium Exception: an element locator is required');
+  var disabled = this._driver.findElement(this._locatorParser(locator)).getAttribute("disabled");
+  var readonly = this._driver.findElement(this._locatorParser(locator)).getAttribute("readOnly");
+  if (disabled == "true" || readonly == "true") {
+    return false;
+  }
+  return true;
+}
+
+/*
+  Check that a specified element is attached to the DOM.
+*/
+Selenium.prototype.isElementPresent = function(locator) {
+  this._checkArg(locator, '[isElementPresent] Selenium Exception: an element locator is required');
+  return this._driver.findElement(this._locatorParser(locator)).size() !=0;
+}
+
+/*
+  Check for a JavaScript prompt (also the same as isAlertPresent).
+*/
+Selenium.prototype.isPromptPresent = function() {
+  return this.isAlertPresent();
+}
+
+/*
+  Check that the specified text appears somewhere on the rendered page.
+*/
+Selenium.prototype.isTextPresent = function(pattern) {
+  this._checkArg(locator, '[isTextPresent] Selenium Exception: you must supply a pattern to match');
+  return this._driver.findElement(By.tagName('body')).getText().contains(pattern);
+}
+
+/*
+  Checks that the specified element is visible.
+*/
+Selenium.prototype.isVisible = function(locator) {
+  this._checkArg(locator, '[isVisible] Selenium Exception: an element locator is required');
+  return this._driver.findElement(this._locatorParser(locator)).isDisplayed();
+}
+
+/*
   Open a specified url. "AndWait" is implied with this method, it will always wait for the 
   page to reach a ready state.
 */

@@ -59,6 +59,13 @@ void [doubleClickAndWait](#doubleClickAndWait) (String locator)<br />
 void [doubleClickAt](#doubleClickAt) (String locator, String offset)<br />
 void [doubleClickAtAndWait](#doubleClickAtAndWait) (String locator, String offset)<br />
 boolean [isAlertPresent](#isAlertPresent) () <br />
+boolean [isChecked](#isChecked) (String locator)<br />
+boolean [isConfirmationPresent](#isConfirmationPresent) ()<br />
+boolean [isEditable](#isEditable) (String locator)<br />
+boolean [isElementPresent](#isElementPresent) (String locator)<br />
+boolean [isPromptPresent](#isPromptPresent) ()<br />
+boolean [isTextPresent](#isTextPresent) (String pattern)<br />
+boolean [isVisible](#isVisible) (String locator)<br />
 void [open](#open) (String url)<br />
 void [pause](#pause) (Int waitTime)<br />
 void [setSpeed](#setSpeed) (Int value)<br />
@@ -372,6 +379,101 @@ boolean isAlertPresent()
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if alert is present, false otherwise
+
+<a name="isChecked">isChecked</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if the button is checked, false otherwise
+
+<a name="isConfirmationPresent">isConfirmationPresent</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if confirmation has been called, false otherwise
+
+<a name="isEditable">isEditable</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if the element is editable, false otherwise
+
+<a name="isElementPresent">isElementPresent</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if the element is present, false otherwise
+
+<a name="isPromptPresent">isPromptPresent</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if prompt is present, false otherwise
+
+<a name="isTextPresent">isTextPresent</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if the text pattern is present, false otherwise
+
+<a name="isVisible">isVisible</a>
+---------------
+
+```
+boolean 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if the element is visible, false otherwise
+
 
 <a name="open">open</a>
 ---------------
