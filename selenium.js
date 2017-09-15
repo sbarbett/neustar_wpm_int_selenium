@@ -127,6 +127,14 @@ Selenium.prototype.assertAttribute = function(attributeLocator, pattern) {
 }
 
 /*
+  Assert that a pattern of text is found on the page
+*/
+Selenium.prototype.assertTextPresent = function(pattern) {
+  this._checkArg(pattern, '[assertTextPresent] Selenium Exception: you must supply a pattern to match');
+  assertTrue(this.isTextPresent(pattern), '[assertTextPresent] Assertion Failure: pattern not found');
+}
+
+/*
 
 */
 Selenium.prototype.assignId = function(locator, identifier) {

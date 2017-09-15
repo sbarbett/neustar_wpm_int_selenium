@@ -40,6 +40,7 @@ void [assertAlert](#assertAlert) (String pattern)<br />
 void [assertAlertNotPresent](#assertAlertNotPresent) ()<br />
 void [assertAlertPresent](#assertAlertPresent) ()<br />
 void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)<br />
+void [assertTextPresent](#assertTextPresent) (String pattern)<br />
 void [assignId](#assignId) (String locator, String identifier)<br />
 void [assignIdAndWait](#assignIdAndWait) (String locator, String identifier)<br />
 void [check](#check) (String locator)<br />
@@ -120,6 +121,18 @@ void assertAttribute(String attributeLocator,
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeLocator - an element locator followed by an @ and then the name of the attribute<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
+
+<a name="assertTextPresent">assertTextPresent</a>
+---------------
+
+```
+void assertTextPresent(String pattern)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a pattern of text is found on the page
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
 
 <a name="assignId">assignId</a>
