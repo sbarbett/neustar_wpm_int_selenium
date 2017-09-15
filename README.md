@@ -40,7 +40,20 @@ void [assertAlert](#assertAlert) (String pattern)<br />
 void [assertAlertNotPresent](#assertAlertNotPresent) ()<br />
 void [assertAlertPresent](#assertAlertPresent) ()<br />
 void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)<br />
+void [assertNotChecked](#assertNotChecked) (String locator)<br />
+void [assertChecked](#assertChecked) (String locator)<br />
+void [assertConfirmationNotPresent](#assertConfirmationNotPresent) ()<br />
+void [assertConfirmationPresent](#assertConfirmationPresent) ()<br />
+void [assertNotEditable](#assertNotEditable) (String locator)<br />
+void [assertEditable](#assertEditable) (String locator)<br />
+void [assertElementNotPresent](#assertElementNotPresent) (String locator)<br />
+void [assertElementPresent](#assertElementPresent) (String locator)<br />
+void [assertPromptNotPresent](#assertPromptNotPresent) ()<br />
+void [assertPromptPresent](#assertPromptPresent) ()<br />
+void [assertTextNotPresent](#assertTextNotPresent) (String pattern)<br />
 void [assertTextPresent](#assertTextPresent) (String pattern)<br />
+void [assertNotVisible](#assertNotVisible) (String locator)<br />
+void [assertVisible](#assertVisible) (String locator)<br />
 void [assignId](#assignId) (String locator, String identifier)<br />
 void [assignIdAndWait](#assignIdAndWait) (String locator, String identifier)<br />
 void [check](#check) (String locator)<br />
@@ -117,11 +130,134 @@ void assertAttribute(String attributeLocator,
                      String pattern)
 ```
 
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that the value of an attribute of a selected element matches a pattern
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeLocator - an element locator followed by an @ and then the name of the attribute<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
+
+<a name="assertNotChecked">assertNotChecked</a>
+---------------
+
+```
+void assertNotChecked(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a toggle-button is not checked
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertChecked">assertChecked</a>
+---------------
+
+```
+void assertChecked(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a toggle-button is checked
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertConfirmationNotPresent">assertConfirmationNotPresent</a>
+---------------
+
+```
+void assertConfirmationNotPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a confirmation is not present
+
+<a name="assertConfirmationPresent">assertConfirmationPresent</a>
+---------------
+
+```
+void assertConfirmationPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a confirmation is present
+
+<a name="assertNotEditable">assertNotEditable</a>
+---------------
+
+```
+void assertNotEditable(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is not editable
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertEditable">assertEditable</a>
+---------------
+
+```
+void assertEditable(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is editable
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertElementNotPresent">assertElementNotPresent</a>
+---------------
+
+```
+void assertElementNotPresent(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is not present
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertElementPresent">assertElementPresent</a>
+---------------
+
+```
+void assertElementPresent(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is present
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertPromptNotPresent">assertPromptNotPresent</a>
+---------------
+
+```
+void assertPromptNotPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a prompt is not present
+
+<a name="assertPromptPresent">assertPromptPresent</a>
+---------------
+
+```
+void assertPromptPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a prompt is present
+
+<a name="assertTextNotPresent">assertTextNotPresent</a>
+---------------
+
+```
+void assertTextNotPresent(String pattern)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that a pattern of text is not found on the page
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
+
 
 <a name="assertTextPresent">assertTextPresent</a>
 ---------------
@@ -134,6 +270,31 @@ void assertTextPresent(String pattern)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
+
+<a name="assertNotVisible">assertNotVisible</a>
+---------------
+
+```
+void assertNotVisible(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is not visible
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="assertVisible">assertVisible</a>
+---------------
+
+```
+void assertVisible(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert that an element is visible
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
 
 <a name="assignId">assignId</a>
 ---------------

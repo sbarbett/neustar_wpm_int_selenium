@@ -127,7 +127,91 @@ Selenium.prototype.assertAttribute = function(attributeLocator, pattern) {
 }
 
 /*
-  Assert that a pattern of text is found on the page
+  Assert that a toggle-button is not checked.
+*/
+Selenium.prototype.assertNotChecked = function(locator) {
+  this._checkArg(locator, '[assertNotChecked] Selenium Exception: an element locator is required');
+  return assertFalse(this.isChecked(locator), '[assertNotChecked] Assertion Failure: element checked');
+}
+
+/*
+  Assert that a toggle-button is checked.
+*/
+Selenium.prototype.assertChecked = function(locator) {
+  this._checkArg(locator, '[assertChecked] Selenium Exception: an element locator is required');
+  return assertTrue(this.isChecked(locator), '[assertChecked] Assertion Failure: element not checked');
+}
+
+/*
+  Assert that a confirmation is not present.
+*/
+Selenium.prototype.assertConfirmationNotPresent = function() {
+  return assertFalse(this.isConfirmationPresent(), '[assertConfirmationNotPresent] Assertion Failure: confirmation found');
+}
+
+/*
+  Assert that a confirmation is present.
+*/
+Selenium.prototype.assertConfirmationPresent = function() {
+  return assertTrue(this.isConfirmationPresent(), '[assertConfirmationPresent] Assertion Failure: confirmation not found');
+}
+
+/*
+    Assert that an element is not editable.
+*/
+Selenium.prototype.assertNotEditable = function(locator) {
+  this._checkArg(locator, '[assertNotEditable] Selenium Exception: an element locator is required');
+  return assertFalse(this.isEditable(locator), '[assertNotEditable] Assertion Failure: element editable');
+}
+
+/*
+  Assert that an element is editable.
+*/
+Selenium.prototype.assertEditable = function(locator) {
+  this._checkArg(locator, '[assertEditable] Selenium Exception: an element locator is required');
+  return assertTrue(this.isEditable(locator), '[assertEditable] Assertion Failure: element not editable');
+}
+
+/*
+  Assert that an element is not present.
+*/
+Selenium.prototype.assertElementNotPresent = function(locator) {
+  this._checkArg(locator, '[assertElementNotPresent] Selenium Exception: an element locator is required');
+  return assertFalse(this.isElementPresent(locator), '[assertElementNotPresent] Assertion Failure: element present');
+}
+
+/*
+  Assert that an element is present.
+*/
+Selenium.prototype.assertElementPresent = function(locator) {
+  this._checkArg(locator, '[assertElementPresent] Selenium Exception: an element locator is required');
+  return assertTrue(this.isElementPresent(locator), '[assertElementPresent] Assertion Failure: element not present');
+}
+
+/*
+  Assert that a prompt is not present.
+*/
+Selenium.prototype.assertPromptNotPresent = function() {
+  return assertFalse(this.isPromptPresent(), '[assertPromptNotPresent] Assertion Failure: prompt found');
+}
+
+/*
+  Assert that a prompt is present.
+*/
+Selenium.prototype.assertPromptPresent = function() {
+  return assertTrue(this.isPromptPresent(), '[assertPromptPresent] Assertion Failure: prompt not found');
+}
+
+/*
+  Assert that a pattern of text is not found on the page.
+*/
+Selenium.prototype.assertTextNotPresent = function(pattern) {
+  this._checkArg(pattern, '[assertTextNotPresent] Selenium Exception: you must supply a pattern to match');
+  assertFalse(this.isTextPresent(pattern), '[assertTextNotPresent] Assertion Failure: pattern found');
+}
+
+/*
+  Assert that a pattern of text is found on the page.
 */
 Selenium.prototype.assertTextPresent = function(pattern) {
   this._checkArg(pattern, '[assertTextPresent] Selenium Exception: you must supply a pattern to match');
@@ -135,7 +219,23 @@ Selenium.prototype.assertTextPresent = function(pattern) {
 }
 
 /*
+  Assert that an element is not visible.
+*/
+Selenium.prototype.assertNotVisible = function(locator) {
+  this._checkArg(locator, '[assertNotVisible] Selenium Exception: an element locator is required');
+  return assertFalse(this.isVisible(locator), '[assertNotVisible] Assertion Failure: element visible');
+}
 
+/*
+  Assert that an element is visible.
+*/
+Selenium.prototype.assertVisible = function(locator) {
+  this._checkArg(locator, '[assertVisible] Selenium Exception: an element locator is required');
+  return assertTrue(this.isVisible(locator), '[assertVisible] Assertion Failure: element not visible');
+}
+
+/*
+Temporarily sets the "id" attribute of a specified element so you can locate it in the future.
 */
 Selenium.prototype.assignId = function(locator, identifier) {
   this._checkArg(locator, '[assignId] Selenium Exception: an element locator is required');
@@ -146,7 +246,8 @@ Selenium.prototype.assignId = function(locator, identifier) {
 }
 
 /*
-
+Temporarily sets the "id" attribute of a specified element so you can locate it in the future.
+then waits for the page to load.
 */
 Selenium.prototype.assignIdAndWait = function(locator, identifier) {
   this._checkArg(locator, '[assignIdAndWait] Selenium Exception: an element locator is required');
