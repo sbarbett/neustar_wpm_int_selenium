@@ -3,9 +3,7 @@ neustar_wpm_int_selenium
 
 *Work in progress*
 
-This is a remaking of the deprecated Selenium Interface using [Neustar WPM's JavaScript API](http://docs.wpm.neustar.biz/testscript-api/biz/neustar/wpm/api/Selenium.html). The purpose is to provide some minimal support for users in need of supporting Selenese style scripting in the wake of Selenium 3 adoption. To me, more of an interesting project as opposed to something practical or advisable. More than anything, it's an interesting<sup>*</sup> look into how methods in the old Selenium RC Interface can be reproduced with WebDriver.
-
-<sup>* The definition of interesting may vary by individual</sup>
+This is a remaking of the deprecated Selenium Interface using [Neustar WPM's JavaScript API](http://docs.wpm.neustar.biz/testscript-api/biz/neustar/wpm/api/Selenium.html). The purpose is to provide some minimal support for users in need of supporting Selenese style scripting in the wake of Selenium 3 adoption. To me, more of a curiosity project as opposed to something practical or advisable. More than anything, it's an interesting look into how methods in the old Selenium RC Interface can be reproduced with WebDriver.
 
 This code is fully open source (GPL). If you actually want to use it, knock yourself out.
 
@@ -42,6 +40,8 @@ void [assertAlert](#assertAlert) (String pattern)<br />
 void [assertAlertNotPresent](#assertAlertNotPresent) ()<br />
 void [assertAlertPresent](#assertAlertPresent) ()<br />
 void [assertAttribute](#assertAttribute) (String attributeLocator, String pattern)<br />
+void [assignId](#assignId) (String locator, String identifier)<br />
+void [assignIdAndWait](#assignIdAndWait) (String locator, String identifier)<br />
 void [check](#check) (String locator)<br />
 void [checkAndWait](#checkAndWait) (String locator)<br />
 void [click](#click) (String locator)<br />
@@ -54,6 +54,11 @@ void [contextMenu](#contextMenu) (String locator)<br />
 void [contextMenuAndWait](#contextMenuAndWait) (String locator)<br />
 void [contextMenuAt](#contextMenuAt) (String locator, String coordString)<br />
 void [contextMenuAtAndWait](#contextMenuAtAndWait) (String locator, String coordString)<br />
+void [doubleClick](#doubleClick) (String locator)<br />
+void [doubleClickAndWait](#doubleClickAndWait) (String locator)<br />
+void [doubleClickAt](#doubleClickAt) (String locator, String offset)<br />
+void [doubleClickAtAndWait](#doubleClickAtAndWait) (String locator, String offset)<br />
+boolean [isAlertPresent](#isAlertPresent) () <br />
 void [open](#open) (String url)<br />
 void [pause](#pause) (Int waitTime)<br />
 void [setSpeed](#setSpeed) (Int value)<br />
@@ -109,6 +114,36 @@ void assertAttribute(String attributeLocator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attributeLocator - an element locator followed by an @ and then the name of the attribute<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check
+
+<a name="assignId">assignId</a>
+---------------
+
+```
+void assignId(String locator,
+              String identifier)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporarily sets the "id" attribute of a specified element so you can locate it in the future
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;identifier - a string used to set the id of the element
+
+<a name="assignIdAndWait">assignIdAndWait</a>
+---------------
+
+```
+void assignIdAndWait(String locator,
+                     String identifier)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporarily sets the "id" attribute of a specified element so you can locate it in the future
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;identifier - a string used to set the id of the element
 
 <a name="check">check</a>
 ---------------
@@ -267,6 +302,76 @@ void contextMenuAtAndWait(String locator,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
+
+<a name="doubleClick">doubleClick</a>
+---------------
+
+```
+void doubleClick(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double-clicks on a link, button, checkbox or radio button
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="doubleClickAndWait">doubleClickAndWait</a>
+---------------
+
+```
+void doubleClickAndWait(String locator)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double-clicks on a link, button, checkbox or radio button
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator
+
+<a name="doubleClickAt">doubleClickAt</a>
+---------------
+
+```
+void doubleClickAt(String locator,
+                   String offset)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double-clicks on a link, button, checkbox or radio button with an offset of x,y
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
+
+<a name="doubleClickAtAndWait">doubleClickAtAndWait</a>
+---------------
+
+```
+void doubleClickAtAndWait(String locator,
+                          String offset)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double-clicks on a link, button, checkbox or radio button with an offset of x,y
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Note:* This command assumes it causes a page to load and waits for it to complete loading
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordString - the x,y position(e.g. "10,20") of the mouse relative to the top left corner of the element
+
+<a name="isAlertPresent">isAlertPresent</a>
+---------------
+
+```
+boolean isAlertPresent()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check whether an alert has occurred.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This never throws an exception.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if alert is present, false otherwise
 
 <a name="open">open</a>
 ---------------

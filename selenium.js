@@ -13,7 +13,7 @@ function Selenium(browser) {
   }
   // Neustar doesn't have ExpectedConditions exposed in their API docs, you have to reference
   // the entire package name. Doing this for brevity.
-  this._expectConditions = org.openqa.selenium.support.ui.ExpectedConditions;
+  this._expectedConditions = org.openqa.selenium.support.ui.ExpectedConditions;
   this._timeout = 30000;
   this._speed = 0;
   this._driver = browser;
@@ -88,7 +88,7 @@ Selenium.prototype._waitForLoad = function() {
 */
 Selenium.prototype.assertAlert = function(pattern) {
   this._checkArg(pattern, '[assertAlert] Selenium Exeption: a matching pattern is required')
-  if (!this._expectedConditions.alertIsPresent()) {
+  if (!this.isAlertPresent()) {
     throw '[assertAlert] Selenium Exception: no alert found';
   }
   assertTrue(driver.switchTo().alert().getText().contains(pattern), '[asserAlert] Assertion Failure: pattern not found');
@@ -99,7 +99,7 @@ Selenium.prototype.assertAlert = function(pattern) {
   Assert that an alert is not present.
 */
 Selenium.prototype.assertAlertNotPresent = function() {
-  assertFalse(this._expectConditions.alertIsPresent(), '[assertAlertNotPresent] Assertion Failure: alert found');
+  assertFalse(this.isAlertPresent(), '[assertAlertNotPresent] Assertion Failure: alert found');
   this._speedWait();
 }
 
@@ -107,7 +107,7 @@ Selenium.prototype.assertAlertNotPresent = function() {
   Assert that an alert is present.
 */
 Selenium.prototype.assertAlertPresent = function() {
-  assertTrue(this._expectConditions.alertIsPresent(), '[assertAlertPresent] Assertion Failure: alert not found');
+  assertTrue(this.isAlertPresent(), '[assertAlertPresent] Assertion Failure: alert not found');
   this._speedWait();
 }
 
@@ -123,6 +123,29 @@ Selenium.prototype.assertAttribute = function(attributeLocator, pattern) {
   var attribute = locator.split(/@(.+)/)[1];
   var value = driver.findElement(this._locatorParser(locator)).getAttribute(attribute);
   assertTrue(value === pattern, '[assertAttribute] Assertion Failure: pattern and value do not match');
+  this._speedWait();
+}
+
+/*
+
+*/
+Selenium.prototype.assignId = function(locator, identifier) {
+  this._checkArg(locator, '[assignId] Selenium Exception: an element locator is required');
+  this._checkArg(identifier, '[assignId] Selenium Exception: an identifier value is required');
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].setAttribute("id", "' + identifier + '");', element);
+  this._speedWait();
+}
+
+/*
+
+*/
+Selenium.prototype.assignIdAndWait = function(locator, identifier) {
+  this._checkArg(locator, '[assignIdAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(identifier, '[assignIdAndWait] Selenium Exception: an identifier value is required');
+  var element = this._driver.findElement(this._locatorParser(locator));
+  this._driver.executeScript('arguments[0].setAttribute("id", "' + identifier + '");', element);
+  this._waitForLoad();
   this._speedWait();
 }
 
@@ -279,6 +302,75 @@ Selenium.prototype.contextMenuAtAndWait = function(locator, offset) {
                        .perform();
   this._waitForLoad();
   this._speedWait();
+}
+
+/*
+  Double-lick on an element using a Selenium Element Locator.
+*/
+Selenium.prototype.doubleClick = function(locator) {
+  this._checkArg(locator, '[doubleClick] Selenium Exception: an element locator is required');
+  Actions(this._driver).doubleClick(driver.findElement(this._locatorParser(locator)));
+  this._speedWait();
+}
+
+/*
+  Double-lick on an element using a Selenium Element Locator then wait for the page to load.
+*/
+Selenium.prototype.doubleClickAndWait = function(locator) {
+  this._checkArg(locator, '[doubleClickAndWait] Selenium Exception: an element locator is required');
+  Actions(this._driver).doubleClick(driver.findElement(this._locatorParser(locator)));
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Perform a double-click at an offset relative to the top left corner of an element.
+*/
+Selenium.prototype.doubleClickAt = function(locator, offset) {
+  this._checkArg(locator, '[doubleClickAt] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[doubleClickAt] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[doubleClickAt] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .doubleClick()
+                       .perform();
+  this._speedWait();
+}
+
+/*
+  Perform a double-click at an offset relative to the top left corner of an element then wait 
+  for the page to load.
+*/
+Selenium.prototype.doubleClickAtAndWait = function(locator, offset) {
+  this._checkArg(locator, '[doubleClickAtAndWait] Selenium Exception: an element locator is required');
+  this._checkArg(offset, '[doubleClickAtAndWait] Selenium Exception: you must provide an offset in "x,y" format');
+  if (!offset.includes(',')) {
+    throw '[doubleClickAtAndWait] Selenium Exception: you must provide an offset in "x,y" format';
+  }
+  var x = offset.split(',')[0].replace(/ /g, '');
+  var y = offset.split(',')[1].replace(/ /g, '');
+  Actions(this._driver).moveToElement(driver.findElement(this._locatorParser(locator)))
+                       .moveByOffset(parseInt(x), parseInt(y))
+                       .doubleClick()
+                       .perform();
+  this._waitForLoad();
+  this._speedWait();
+}
+
+/*
+  Checks to see if an alert has occurred without throwing an exception.
+*/
+Selenium.prototype.isAlertPresent = function() {
+  try {
+    driver.switchTo().alert();
+    return true;
+  } catch(e) {
+    return false;
+  }
 }
 
 /*
