@@ -3,7 +3,7 @@ neustar_wpm_int_selenium
 
 *Work in progress*
 
-This is a remaking of the deprecated Selenium Interface using [Neustar WPM's JavaScript API](http://docs.wpm.neustar.biz/testscript-api/biz/neustar/wpm/api/Selenium.html). The purpose is to provide some minimal support for users in need of supporting Selenese style scripting in the wake of Selenium 3 adoption. To me, more of a curiosity project as opposed to something practical or advisable. More than anything, it's an interesting look into how methods in the old Selenium RC Interface can be reproduced with WebDriver.
+This is a remaking of the deprecated Selenium Interface using [Neustar WPM's JavaScript API](http://docs.wpm.neustar.biz/testscript-api/). The purpose is to provide some minimal support for users in need of supporting Selenese style scripting in the wake of Selenium 3 adoption. To me, more of a curiosity project as opposed to something practical or advisable. More than anything, it's an interesting look into how methods in the old Selenium RC Interface can be reproduced with WebDriver.
 
 This code is fully open source (GPL). If you actually want to use it, knock yourself out.
 
@@ -25,7 +25,7 @@ var selenium = new Selenium(driver);
 
 ```javascript
 var c = openHttpClient();
-var s = c.get('https://cdn.rawgit.com/sbarbett/neustar_wpm_int_selenium/ea6c23c4/selenium.min.js');
+var s = c.get('https://raw.githubusercontent.com/sbarbett/neustar_wpm_int_selenium/master/selenium.min.js');
 eval(s.getBody() + "");
 var driver = openBrowser();
 var selenium = new Selenium(driver);
