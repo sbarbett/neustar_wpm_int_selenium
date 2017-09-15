@@ -384,10 +384,10 @@ boolean isAlertPresent()
 ---------------
 
 ```
-boolean 
+boolean isChecked(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get whether a toggle-button is checked
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
@@ -398,10 +398,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isConfirmationPresent()
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks for a confirmation box
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if confirmation has been called, false otherwise
@@ -410,10 +410,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isEditable(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check tosee if an element is readonly or disabled
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
@@ -424,10 +424,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isElementPresent(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check that a specified element is attached to the DOM
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
@@ -438,10 +438,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isPromptPresent()
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check for a JavaScript prompt
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Returns:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true if prompt is present, false otherwise
@@ -450,10 +450,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isTextPresent(String pattern)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check that the specified text appears somewhere on the rendered page
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pattern - the pattern to check<br />
@@ -464,10 +464,10 @@ boolean
 ---------------
 
 ```
-boolean 
+boolean isVisible(String locator)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks that the specified element is visible
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Parameters:**<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locator - an element locator<br />
