@@ -548,6 +548,6 @@ Selenium.prototype.uncheckAndWait = function(locator) {
 Selenium.prototype.waitForPageToLoad = function(timeout) {
   var driver = this._driver;
   waitFor(function(){
-    return this._driver.executeScript('return document.readyState;').equals('complete');
+    return driver.executeScript('return document.readyState;').equals('complete');
   }, timeout);
 }
